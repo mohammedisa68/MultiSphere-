@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "Profile": {
+      "title": "Profile",
+      "description": "User profile with wallets, stats, history and preferences",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "description": "User email address" },
+        "phone": { "type": "string", "description": "User phone number" },
+        "name": { "type": "string", "description": "User full name" },
+        "passcode": { "type": "string", "description": "User access passcode" },
+        "nationalId": { "type": "string", "description": "User national identification number" },
+        "wallet_balance": { "type": "number", "description": "User wallet balance" },
+        "bio": { "type": "string", "description": "User bio description" },
+        "photoURL": { "type": "string", "description": "User profile photo URL" },
+        "stats": { "type": "object", "description": "Usage statistics metrics" },
+        "history": { "type": "array", "description": "Log of AI tool and service usage" },
+        "socials": { "type": "object", "description": "User social media account usernames" }
+      },
+      "required": ["email", "name"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Wallet deposit and transfer transactions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique transaction ID" },
+        "email": { "type": "string", "description": "The email associated with this transaction" },
+        "type": { "type": "string", "description": "Transaction type (deposit, transfer, gift, etc.)" },
+        "amount": { "type": "number", "description": "Amount of transaction" },
+        "method": { "type": "string", "description": "Transaction method" },
+        "date": { "type": "string", "description": "The local date string of the transaction" },
+        "status": { "type": "string", "description": "Transaction status (completed, pending, failed)" },
+        "description": { "type": "string", "description": "Transaction details" }
+      },
+      "required": ["id", "email", "type", "amount", "status"]
+    }
+  },
+  "firestore": {
+    "profiles/{email}": {
+      "schema": "Profile",
+      "description": "User profile accounts keyed by normalized email address"
+    },
+    "transactions/{txId}": {
+      "schema": "Transaction",
+      "description": "Financial ledger transactions keyed by transaction ID"
+    }
+  }
+}

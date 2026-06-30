@@ -1,0 +1,31 @@
+{
+  "name": "Multi_Sphere",
+  "short_name": "MultiSphere",
+  "description": "Many services one Sphere",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w\u003d192\u0026h\u003d192\u0026fit\u003dcrop",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w\u003d512\u0026h\u003d512\u0026fit\u003dcrop",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "requestFramePermissions": [
+    "microphone",
+    "camera",
+    "geolocation",
+    "display-capture"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

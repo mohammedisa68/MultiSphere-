@@ -1,0 +1,40 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 1. Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(email) {
+      return isSignedIn() && request.auth.token.email.lower() == email.lower();
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-\\.\\@]+$');
+    }
+
+    // Profiles Collection
+    match /profiles/{email} {
+      allow get: if isSignedIn();
+      allow list: if isSignedIn() && resource.data.email.lower() == request.auth.token.email.lower();
+      allow create: if isSignedIn() && (request.auth.token.email.lower() == email.lower() || request.auth.token.email_verified == true);
+      allow update: if isSignedIn() && (request.auth.token.email.lower() == email.lower() || request.auth.token.email.lower() == resource.data.email.lower());
+      allow delete: if false; // Profiles are permanent
+    }
+
+    // Transactions Collection
+    match /transactions/{txId} {
+      allow get: if isSignedIn() && (resource.data.email.lower() == request.auth.token.email.lower());
+      allow list: if isSignedIn() && (resource.data.email.lower() == request.auth.token.email.lower());
+      allow create: if isSignedIn();
+      allow update: if false; // Transactions are immutable once written
+      allow delete: if false;
+    }
+  }
+}

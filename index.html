@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="om">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MULTI_SPHERE - Many services one Sphere</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            margin: 0;
+            overflow-x: hidden;
+            background: #ffffff;
+        }
+
+        /* VIBRANT DIAGONAL BACKGROUND */
+        .multisphere-diagonal-bg {
+            background: repeating-linear-gradient(
+                -45deg,
+                #00f5d4,
+                #00f5d4 120px,
+                #ff006e 120px,
+                #ff006e 240px
+            );
+            background-size: 400% 400%;
+            animation: diagonal-flow 30s linear infinite;
+            background-attachment: fixed;
+        }
+
+        @keyframes diagonal-flow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        /* MULTISPHERE AURA - ROTATING GRADIENT */
+        @keyframes rotate-aura {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .aura-btn {
+            position: relative;
+            overflow: hidden;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .aura-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px -5px rgba(255, 0, 110, 0.4);
+        }
+
+        .aura-btn .aura-effect {
+            position: absolute;
+            top: -150%;
+            left: -150%;
+            width: 400%;
+            height: 400%;
+            background: conic-gradient(#00f5d4, #00ff00, #a855f7, #ff006e, #00f5d4);
+            animation: rotate-aura 3s linear infinite;
+            z-index: 0;
+        }
+
+        .aura-btn .aura-content {
+            position: relative;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.8);
+            width: calc(100% - 6px);
+            height: calc(100% - 6px);
+            margin: 3px;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 2rem;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/": "https://esm.sh/react-dom@19.0.0/",
+    "react/": "https://esm.sh/react@19.0.0/",
+    "@google/genai": "https://esm.sh/@google/genai@1.40.0",
+    "firebase/app": "https://www.gstatic.com/firebasejs/12.9.0/firebase-app.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js",
+    "firebase/analytics": "https://www.gstatic.com/firebasejs/12.9.0/firebase-analytics.js",
+    "firebase/": "https://esm.sh/firebase@^12.9.0/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

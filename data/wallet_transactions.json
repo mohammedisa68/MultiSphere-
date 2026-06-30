@@ -1,0 +1,24 @@
+[
+  {
+    "id": "tx-demo-1",
+    "email": "mohammed@gmail.com",
+    "type": "deposit",
+    "amount": 2500,
+    "currency": "ETB",
+    "date": "2026-05-21",
+    "method": "telebirr",
+    "description": "Telebirr Deposit",
+    "status": "completed"
+  },
+  {
+    "id": "tx-demo-2",
+    "email": "test@gmail.com",
+    "type": "deposit",
+    "amount": 1000,
+    "currency": "ETB",
+    "date": "2026-05-21",
+    "method": "paypal",
+    "description": "PayPal Deposit",
+    "status": "completed"
+  }
+]
